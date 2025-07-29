@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <!-- Get in touch -->
+  <section class="get-in-touch-boxed" id="get_in_touch">
+    <h2 class="section-title">Get In Touch</h2>
+    <p class="subtitle">We make shifting fast, safe & affordable. Connect now!</p>
+
+    <div class="contact-card">
+      <div class="contact-left">
+        <h3>Gati House Shifting Packers and Movers</h3>
+        <p><i class="fas fa-phone"></i> +91 9911076600</p>
+        <p><i class="fas fa-envelope"></i>gatishiftingpackers@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Office No. 001, Shree Ganesh Tower CHS, Plot No. 98, Sector 21,
+          Ghansoli, Navi Mumbai, Maharashtra 400701, India</p>
+      </div>
+
+      <form class="contact-right"
+        action="https://script.google.com/macros/s/AKfycbxxiE4Smh-h_yiurQs_aicBn5hz2KY70T.../exec" method="POST"
+        target="hidden_iframe" onsubmit="submitted=true;">
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+        </div>
+        <div class="form-row">
+          <input type="tel" name="phone" placeholder="Contact Number" required />
+          <input type="text" name="pickup" placeholder="Pickup From" required />
+        </div>
+        <input type="text" name="drop" placeholder="Drop Point" required />
+        <textarea rows="2" name="details" placeholder="Goods List / Details" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+
+      <!-- Hidden iframe to handle form response -->
+      <iframe name="hidden_iframe" style="display:none;"
+        onload="if(submitted) alert('Form submitted successfully!');"></iframe>
+      <script>let submitted = false;</script>
+
+    </div>
+  </section>
+
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

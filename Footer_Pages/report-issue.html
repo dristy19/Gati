@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gati Logistics - Packers & Movers</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="header"></div>
+<section class="report-section">
+  <div class="container">
+    <div class="report-wrapper">
+      <div class="report-image">
+        <img src="../images/office.png" alt="Report an issue" />
+      </div>
+      <div class="report-form">
+        <h2>Report an Issue</h2>
+        <p class="report-subtitle">Facing any issue with your move? Tell us and we’ll resolve it fast.</p>
+
+        <form id="issueForm">
+          <input type="text" name="name" placeholder="Full Name" required />
+          <input type="tel" name="phone" placeholder="Phone Number" required />
+          <input type="text" name="booking" placeholder="Booking ID (optional)" />
+          
+          <select name="category" required>
+            <option value="">Select Issue Category</option>
+            <option value="Broken Items">Broken Items</option>
+            <option value="Cheap Packing">Cheap Packing</option>
+            <option value="Delay in Delivery">Delay in Delivery</option>
+            <option value="Staff Misbehavior">Staff Misbehavior</option>
+            <option value="Incorrect Billing">Incorrect Billing</option>
+            <option value="Lost/Missing Items">Lost/Missing Items</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <textarea name="message" placeholder="Describe your issue in detail..." rows="4" required></textarea>
+          <input type="file" id="imageUpload" accept="image/*" />
+
+          <button type="submit">Submit & Send on WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+    <div id="map"></div>
+    <div id="achievements"></div>
+    <div id="services"></div>
+    <div id="trust"></div>
+    <div id="brands"></div>
+    <div id="reviews"></div>
+    <div id="faq"></div>
+    <div id="locations"></div>
+    <div id="footer"></div>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>
+
