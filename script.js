@@ -197,15 +197,16 @@ loadSection("get_in_touch", "../Components/get_in_touch.html", () => {
         .then(res => res.json())
         .then(data => {
           alert("Form submitted successfully!");
+          form.reset();
         })
         .catch(error => {
           console.error("Error:", error);
           alert("There was an error. Please try again.");
         });
-
     });
   }
 });
+
 
 
 // ===== Load BRANDS
