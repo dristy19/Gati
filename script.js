@@ -184,11 +184,13 @@ loadSection("get_in_touch", "../Components/get_in_touch.html", () => {
         details: form.details.value
       };
 
-      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxxiE4Smh-h_yiurQs_aicBn5hz2KY70TtxKc9EStjcDs7-Bpgm5pAiVWXP-vkEAAzb/exec";
+      // ✅ Replace with your backend API endpoint
+const BACKEND_API_URL = window.location.hostname === "localhost"
+  ? "http://localhost:5000/api/leads"
+  : "https://gati-crm-backend.onrender.com/api/leads";
 
-      fetch(GOOGLE_SCRIPT_URL, {
+      fetch(BACKEND_API_URL, {
         method: "POST",
-        mode: "cors",
         headers: {
           "Content-Type": "application/json"
         },
