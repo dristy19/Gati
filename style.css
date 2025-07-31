@@ -251,62 +251,65 @@ a {
 }
 
 /* Hero section layout */
+#hero {
+  width: 100%;
+  padding: 20px;
+}
+
 .hero {
-  padding: 4rem 4rem;
-}
-
-.hero-content {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.text-section {
-  flex: 1 1 50%;
-}
-
-.text-section h1 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.text-section p {
-  font-size: 0.8rem;
-  line-height: 1.8;
-  margin-bottom: 1rem;
-}
-
-.text-section a {
-  color: var(--color-red);
-  text-decoration: underline;
-}
-
-/* Hero Right Image */
-.cards-section.image-only {
-  display: flex;
-  justify-content: center;
+  flex-direction: column; /* Stack image on top, text below */
   align-items: center;
-  padding: 1rem 0;
+  padding: 0 4rem 4rem;
+}
+
+.cards-section.image-only {
+  width: 80%;
+  margin-bottom: 20px;
+  animation: fadeInRight 1.2s ease-out forwards;
+  opacity: 0; /* For animation */
 }
 
 .relocation-image {
-  max-width: 100%;
-  width: 450px;
+  width: 100%;
   height: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
-/* Keyframes */
+/* Text Content Below Image */
+.hero-content {
+  width: 70%;
+}
+
+.text-section {
+  text-align: left;
+  animation: fadeInUp 1.5s ease-out forwards;
+  opacity: 0; /* For animation */
+}
+
+.text-section h1 {
+  font-size: 1.7rem;
+  margin-bottom: 10px;
+  color: #1e293b;
+}
+
+.text-section p {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  color: #334155;
+}
+
+.text-section span {
+  font-weight: bold;
+  color: #ef4444;
+}
+
+/* Keyframe animations */
 @keyframes fadeInUp {
   0% {
     opacity: 0;
     transform: translateY(30px);
   }
-
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -318,49 +321,40 @@ a {
     opacity: 0;
     transform: translateX(30px);
   }
-
   100% {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
-/* Apply to text */
-.text-section {
-  animation: fadeInUp 1.5s ease-out forwards;
-  opacity: 0;
-  /* Required to start from invisible */
-}
-
-/* Apply to image */
-.relocation-image {
-  animation: fadeInRight 1.2s ease-out forwards;
-  opacity: 0;
-  /* Required to start from invisible */
-}
-
-
+/* Responsive Styles */
 @media (max-width: 768px) {
   .hero {
-    padding: 1rem 1rem 0.5rem;
-    /* Less top/bottom padding */
+    padding: 0;
+  }
+
+  #hero {
+    padding: 10px;
+  }
+
+  .cards-section.image-only {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 2rem;
   }
 
   .relocation-image {
     margin-bottom: 2rem;
-    /* Pushes the image away from the form */
+  }
+
+  .hero-content {
+    width: 100%;
+    padding: 0 1rem;
   }
 
   .floating-form {
     margin-top: 1rem;
-    /* Keeps distance from image if needed */
     position: relative;
-    /* Prevents overlap issues if it's positioned */
-  }
-
-  .cards-section.image-only {
-    padding-bottom: 4rem;
-    /* Gives enough space at the bottom */
   }
 }
 
@@ -3809,7 +3803,7 @@ textarea {
   justify-content: center;
   font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   position: relative;
   animation: slideDown 1s ease-out forwards;
   color: var(--color-primary);
@@ -3818,7 +3812,7 @@ textarea {
 .support-header::after {
   content: '';
   width: 50%;
-  height: 4px;
+  height: 3px;
   background-color: var(--color-accent);
   position: absolute;
   left: 25%;
@@ -4673,3 +4667,45 @@ ul.checklist {
         flex-direction: column;
       }
     }
+
+    .floating-contact-bar {
+  position: fixed;
+  bottom: 20px; /* Give some breathing room from the bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30%;
+  background-color: var(--color-primary);
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  z-index: 9999;
+  font-family: sans-serif;
+  border-radius: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.floating-contact-bar .contact-link {
+  color: white;
+  text-decoration: none;
+  font-size: 14px; /* Reduced font size */
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.floating-contact-bar .contact-link i {
+  font-size: 16px; /* Slightly smaller icon */
+}
+
+@media (max-width: 768px) { 
+  .floating-contact-bar {
+    width: 70%;
+  }
+
+.floating-contact-bar .contact-link i {
+  font-size: 14px;
+}
+}

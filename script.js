@@ -129,8 +129,9 @@ loadSection("about_us", "../Components/about_us.html");
 // ===== Load REVIEWS
 loadSection("reviews", "../Components/reviews.html");
 
-// ===== Load FAQ with toggle logic
+// ===== Load FAQ toggle & "Show More" logic
 loadSection("faq", "../Components/faq.html", () => {
+  // FAQ toggle logic
   const faqButtons = document.querySelectorAll(".faq-question");
 
   faqButtons.forEach((btn) => {
@@ -139,11 +140,9 @@ loadSection("faq", "../Components/faq.html", () => {
       const icon = btn.querySelector(".faq-icon");
       const isOpen = answer.style.display === "block";
 
-      // Close all
-      document
-        .querySelectorAll(".faq-answer")
-        .forEach((ans) => (ans.style.display = "none"));
-      document.querySelectorAll(".faq-icon").forEach((ic) => {
+      // Close all first
+      document.querySelectorAll(".faq-answer").forEach(ans => ans.style.display = "none");
+      document.querySelectorAll(".faq-icon").forEach(ic => {
         ic.classList.remove("fa-minus");
         ic.classList.add("fa-plus");
       });
@@ -156,6 +155,19 @@ loadSection("faq", "../Components/faq.html", () => {
       }
     });
   });
+
+  // Show More logic
+  const showMoreBtn = document.getElementById("show-more-btn");
+  const contactUsBtn = document.getElementById("contact-us-btn");
+  const extraFaqs = document.querySelectorAll(".extra-faq");
+
+  if (showMoreBtn) {
+    showMoreBtn.addEventListener("click", () => {
+      extraFaqs.forEach(faq => faq.classList.remove("hidden"));
+      showMoreBtn.classList.add("hidden");
+      contactUsBtn.classList.remove("hidden");
+    });
+  }
 });
 
 // ===== Load LOCATIONS
@@ -166,6 +178,9 @@ loadSection("footer", "../Components/footer.html");
 
 // ===== Load STEPS FOR QUOTE
 loadSection("steps_for_quote", "../Components/steps_for_quote.html");
+
+// ===== Load CONTACT BAR (floating bar)
+loadSection("contact_bar", "../Components/floating-contact-bar.html");
 
 // ===== Load GET IN TOUCH
 loadSection("get_in_touch", "../Components/get_in_touch.html", () => {
@@ -373,4 +388,58 @@ document.addEventListener("DOMContentLoaded", () => {
   setupContactModal();
   setupServiceTabs();
   setupIssueForm();
+});
+
+
+// Show section on scroll
+const sections = document.querySelectorAll('.mg-section');
+
+const showOnScroll = () => {
+  const triggerBottom = window.innerHeight * 0.85;
+
+  sections.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+
+    if (sectionTop < triggerBottom) {
+      section.classList.add('visible');
+    }
+  });
+};
+
+window.addEventListener('scroll', showOnScroll);
+window.addEventListener('load', showOnScroll); // run once on page load
+
+const navLinks = document.querySelectorAll('nav.sidebar a');
+
+const activateCurrentTab = () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 120; // adjust for sticky nav
+    if (scrollY >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    }
+  });
+};
+
+window.addEventListener("scroll", activateCurrentTab);
+
+navLinks.forEach(link => {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute("href").slice(1);
+    const target = document.getElementById(targetId);
+
+    window.scrollTo({
+      top: target.offsetTop - 80, // adjust for header height
+      behavior: "smooth"
+    });
+  });
 });
