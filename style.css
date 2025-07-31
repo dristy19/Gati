@@ -233,20 +233,63 @@ a {
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
+  .top-contact-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    font-size: 0.7rem; /* or 10px */
+    z-index: 1002;
+    padding: 4px 12px; /* less padding for smaller screens */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px; /* reduced gap */
+    box-sizing: border-box;
+  }
+
+  .email-hidden {
+    display: none; /* Hide email on mobile */
+  }
+
+  .header {
+    position: fixed;
+    top: 44px; /* Adjusted for smaller top-contact-bar height */
+    left: 0;
+    right: 40;
+    z-index: 1001;
+    background-color: var(--color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px; /* reduced padding */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+  }
+
+  .banner {
+    position: fixed;
+    top: calc(28px + 60px); /* top-contact-bar height + header height */
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    font-weight: 500;
+    padding: 10px 0 2px;
+    font-size: 11px;
+    box-sizing: border-box;
+  }
+
+  /* Keep your other mobile styles here */
 
   .logo img {
     width: 100%;
-    /* Make it full width */
-    height: 50px;
-    /* Maintain aspect ratio */
+    height: 40px; /* smaller height */
     margin-left: 0;
-    /* Remove left margin */
     display: block;
-    /* Ensures it behaves as block-level */
-  }
-
-  .top-contact-bar {
-    display: none;
   }
 
   .nav-links {
@@ -260,7 +303,6 @@ a {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     padding: 12px;
     z-index: 999;
-    /* ensure it's on top */
   }
 
   .nav-links.active {
@@ -271,8 +313,8 @@ a {
     display: block;
     cursor: pointer;
   }
-
 }
+
 
 /* Hero section layout */
 #hero {
