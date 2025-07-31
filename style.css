@@ -25,7 +25,7 @@ body {
   color: var(--color-dark);
   font-size: 13px;
   line-height: 1.6;
-   padding-top: calc(32px + 60px + 44px);
+  padding-top: calc(32px + 60px + 44px);
 }
 
 a {
@@ -77,7 +77,7 @@ a {
 /* === HEADER === */
 .header {
   position: fixed;
-  top: 32px; /* Adjust based on height of .top-contact-bar */
+  top: 50px; /* Adjust based on height of .top-contact-bar */
   left: 0;
   right: 0;
   z-index: 1001;
@@ -175,6 +175,7 @@ a {
   display: flex;
   align-items: center;
   gap: 15px;
+  margin-right: 12px;
 }
 
 .phone-btn {
@@ -214,7 +215,7 @@ a {
 /* === SCROLLING BANNER === */
 .banner {
   position: fixed;
-  top: calc(32px + 82px); /* top-contact-bar height + header height */
+  top: calc(32px + 106px); /* top-contact-bar height + header height */
   left: 0;
   right: 0;
   z-index: 1000;
@@ -4723,7 +4724,7 @@ ul.checklist {
 
 .city-content-wrapper {
   max-width: 1000px;
-  margin: 40px auto;
+  margin: 60px auto;
   background: var(--color-light);
   border-radius: 10px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
