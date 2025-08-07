@@ -298,7 +298,8 @@ function setupServiceTabs() {
     house: "House Shifting", ac: "AC Shifting", bike: "Bike Transport", car: "Car Transport",
     pet: "Pet Relocation", office: "Office Shifting", commercial: "Commercial Shifting",
     luggage: "Luggage Transport", domestic: "Domestic Moving", international: "International Moving",
-    tempo: "Tempo for Shifting",
+    tempo: "Tempo for Shifting",   warehouse: 'Warehouse Services',
+  storage: 'Storage Facility',
   };
 
   const defaultService = "house";
