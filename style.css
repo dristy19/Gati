@@ -77,7 +77,7 @@ a {
 /* === HEADER === */
 .header {
   position: fixed;
-  top: 50px; /* Adjust based on height of .top-contact-bar */
+  top: 48px; /* Adjust based on height of .top-contact-bar */
   left: 0;
   right: 0;
   z-index: 1001;

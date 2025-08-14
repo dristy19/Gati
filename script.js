@@ -299,7 +299,7 @@ function setupServiceTabs() {
     pet: "Pet Relocation", office: "Office Shifting", commercial: "Commercial Shifting",
     luggage: "Luggage Transport", domestic: "Domestic Moving", international: "International Moving",
     tempo: "Tempo for Shifting",   warehouse: 'Warehouse Services',
-  storage: 'Storage Facility',
+  storage: 'Storage Facility', coldstorage: 'Cold Storage'
   };
 
   const defaultService = "house";
@@ -336,7 +336,7 @@ function setupIssueForm() {
     const category = e.target.category.value;
     const message = e.target.message.value.trim();
 
-    const whatsappNumber = "91XXXXXXXXXX"; // Replace with your WhatsApp number
+    const whatsappNumber = "+917290008200"; // Replace with your WhatsApp number
     const fullMessage = `🚨 New Issue Reported!\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n📦 Booking ID: ${booking || "N/A"}\n📋 Category: ${category}\n📝 Message: ${message}`;
     const encoded = encodeURIComponent(fullMessage);
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encoded}`;
