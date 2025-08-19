@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Gati Packers - Get In Touch</title>
   <link rel="stylesheet" href="../style.css">
 </head>
 
@@ -18,13 +18,13 @@
       <div class="contact-left">
         <h3>Gati House Shifting Packers and Movers</h3>
         <p><i class="fas fa-phone"></i> +91 72900 08200</p>
-        <p><i class="fas fa-envelope"></i>gatishiftingpackers@gmail.com</p>
+        <p><i class="fas fa-envelope"></i> gatishiftingpackers@gmail.com</p>
         <p><i class="fas fa-map-marker-alt"></i> Office No. 001, Shree Ganesh Tower CHS, Plot No. 98, Sector 21,
           Ghansoli, Navi Mumbai, Maharashtra 400701, India</p>
       </div>
 
-<form class="contact-right" id="pickupForm">
-
+      <!-- Contact Form -->
+      <form class="contact-right" id="pickupForm" method="POST">
         <div class="form-row">
           <input type="text" name="name" placeholder="Your Name" required />
           <input type="email" name="email" placeholder="Your Email" required />
@@ -39,40 +39,5 @@
       </form>
     </div>
   </section>
-
-
-  <script src="../script.js"></script>
-  <script>
-  document.getElementById('pickupForm').addEventListener('submit', async function (e) {
-    e.preventDefault(); // Prevent default form submit
-
-    const formData = new FormData(this);
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      phone: formData.get('phone'),
-      location: formData.get('pickup'),
-      service: formData.get('details') + ' | Drop Point: ' + formData.get('drop')
-    };
-
-    try {
-      const response = await fetch('https://gati-crm-backend.onrender.com/api/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-
-      if (response.ok) {
-        alert('Thank you! We’ll reach out soon.');
-        document.getElementById('pickupForm').reset();
-      } else {
-        alert('Something went wrong. Please try again later.');
-      }
-    } catch (err) {
-      console.error('Error:', err);
-      alert('Submission failed. Server not responding.');
-    }
-  });
-</script>
 </body>
 </html>

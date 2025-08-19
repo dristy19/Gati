@@ -4944,3 +4944,15 @@ ul.checklist {
     height: 220px;
   }
 }
+
+.city-address {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-left: 4px solid #ff6600;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.city-address strong {
+  color: #333;
+}
