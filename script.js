@@ -12,6 +12,69 @@ function loadSection(id, filePath, callback) {
     .catch((err) => console.error(`Failed to load ${id}:`, err));
 }
 
+// Show custom popup
+function showCustomPopup(message = "We’ll reach out to you soon.") {
+  const popup = document.getElementById("customPopup");
+  if (!popup) return;
+
+  const msgEl = popup.querySelector(".popup-message-custom");
+  if (msgEl) msgEl.textContent = message;
+
+  popup.style.display = "flex";
+}
+
+// Close custom popup
+function closeCustomPopup() {
+  const popup = document.getElementById("customPopup");
+  if (popup) popup.style.display = "none";
+}
+
+// Load the popup section
+loadSection("on_load_popup", "../Components/on_load.html", () => {
+  const popupOverlay = document.getElementById('popupOverlay');
+  const popupCloseBtn = document.getElementById('popupCloseBtn');
+  const popupForm = popupOverlay?.querySelector("form");
+
+  if (!popupOverlay || !popupCloseBtn || !popupForm) return;
+
+  // Show popup automatically after 4 seconds
+  setTimeout(() => {
+    popupOverlay.style.display = 'flex';
+  }, 4000);
+
+  // Close popup only with cross button
+  popupCloseBtn.addEventListener('click', () => {
+    popupOverlay.style.display = 'none';
+  });
+
+  // Handle form submission inside popup
+  popupForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const formData = new FormData(popupForm);
+
+    try {
+      const response = await fetch('../save_form.php', {
+        method: 'POST',
+        body: formData
+      });
+      const text = await response.text();
+
+      if (text.includes("success")) {
+        popupForm.reset();
+        popupOverlay.style.display = 'none';
+        showCustomPopup();  // ✅ Custom popup instead of alert
+      }
+      else {
+        alert("⚠️ Submission failed: " + text); // Error alert
+      }
+    } catch (err) {
+      console.error(err);
+      alert("❌ Submission failed. Please try again later."); // Network/error alert
+    }
+  });
+});
+
+
 // ========== SECTION LOADS ==========
 
 // HEADER
@@ -106,7 +169,7 @@ loadSection("faq", "../Components/faq.html", () => {
       const isOpen = answer.style.display === "block";
       document.querySelectorAll(".faq-answer").forEach(a => a.style.display = "none");
       document.querySelectorAll(".faq-icon").forEach(i => { i.classList.remove("fa-minus"); i.classList.add("fa-plus"); });
-      if (!isOpen) { answer.style.display = "block"; icon.classList.replace("fa-plus","fa-minus"); }
+      if (!isOpen) { answer.style.display = "block"; icon.classList.replace("fa-plus", "fa-minus"); }
     });
   });
 
@@ -201,23 +264,39 @@ function setupIssueForm() {
   });
 }
 
-// Pickup Form Submission (single handler)
 function setupPickupForm() {
   const form = document.getElementById('pickupForm');
   if (!form) return;
+
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
     const formData = new FormData(form);
+
     try {
-      const response = await fetch('https://gatishiftingpackers.com/save_form.php', { method: 'POST', body: formData });
+      const response = await fetch('https://gatishiftingpackers.com/save_form.php', {
+        method: 'POST',
+        body: formData
+      });
       const text = await response.text();
-      if (text.includes("success")) { alert("✅ Thank you! We’ll reach out soon."); form.reset(); }
-      else alert("⚠️ Error: " + text);
+
+      if (text.includes("success")) {
+        popupForm.reset();
+        popupOverlay.style.display = 'none';
+        showCustomPopup();  // ✅ Custom popup instead of alert
+      }
+      else {
+        alert("⚠️ Submission failed: " + text); // Error alert
+      }
+
     } catch (err) {
-      console.error(err); alert("❌ Submission failed. Please try again later.");
+      console.error(err);
+      alert("❌ Submission failed. Please try again later."); // Network/error alert
     }
   });
 }
+
+// Initialize the form handler
+window.addEventListener('DOMContentLoaded', setupPickupForm);
 
 // ========== Scroll Animation & Active Sidebar Highlight ==========
 const sections = document.querySelectorAll('.mg-section');
@@ -251,7 +330,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupPhotoGallery();
   setupServiceTabs();
   setupIssueForm();
-  loadSection("get_in_touch", "../Comp  onents/get_in_touch.html", () => {
-  setupPickupForm();
-});
+  loadSection("get_in_touch", "../Components/get_in_touch.html", () => {
+    setupPickupForm();
+  });
 });

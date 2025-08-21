@@ -41,11 +41,12 @@
         <input type="hidden" name="form_type" value="domestic">
         <div class="form-grid">
           <input type="text" name="full_name" placeholder="Full Name*" required>
-          <input type="text" name="phone" placeholder="Mobile No*" required>
+          <input type="tel" name="phone" placeholder="Mobile No*" 
+                 pattern="[0-9]{10,15}" title="Enter a valid phone number (10–15 digits)" required>
           <input type="email" name="email" placeholder="Email ID">
           <input type="text" name="field1" placeholder="From*" id="domestic-from" class="autocomplete" required>
           <input type="text" name="field2" placeholder="To*" id="domestic-to" class="autocomplete" required>
-          <input type="text" name="field3" placeholder="Enter Captcha*" required>
+          <!-- Removed captcha -->
         </div>
         <button type="submit">Submit</button>
       </form>
@@ -58,7 +59,8 @@
         <input type="hidden" name="form_type" value="car">
         <div class="form-grid">
           <input type="text" name="full_name" placeholder="Full Name*" required>
-          <input type="text" name="phone" placeholder="Mobile No*" required>
+          <input type="tel" name="phone" placeholder="Mobile No*" 
+                 pattern="[0-9]{10,15}" title="Enter a valid phone number (10–15 digits)" required>
           <input type="email" name="email" placeholder="Email ID*" required>
           <input type="text" name="field1" placeholder="Pickup City*" id="car-pickup" class="autocomplete" required>
           <input type="text" name="field2" placeholder="Drop City*" id="car-drop" class="autocomplete" required>
@@ -75,7 +77,8 @@
         <input type="hidden" name="form_type" value="storage">
         <div class="form-grid">
           <input type="text" name="full_name" placeholder="Full Name*" required>
-          <input type="text" name="phone" placeholder="Mobile No*" required>
+          <input type="tel" name="phone" placeholder="Mobile No*" 
+                 pattern="[0-9]{10,15}" title="Enter a valid phone number (10–15 digits)" required>
           <input type="email" name="email" placeholder="Email ID">
           <input type="text" name="field1" placeholder="City of Storage" id="storage-city" class="autocomplete">
           <input type="text" name="field2" placeholder="Duration (e.g., 2 months)">
@@ -92,7 +95,8 @@
         <input type="hidden" name="form_type" value="flight">
         <div class="form-grid">
           <input type="text" name="full_name" placeholder="Full Name*" required>
-          <input type="text" name="phone" placeholder="Mobile No*" required>
+          <input type="tel" name="phone" placeholder="Mobile No*" 
+                 pattern="[0-9]{10,15}" title="Enter a valid phone number (10–15 digits)" required>
           <input type="email" name="email" placeholder="Email ID*" required>
           <input type="text" name="field1" placeholder="From Airport*" id="flight-from" class="autocomplete" required>
           <input type="text" name="field2" placeholder="To Airport*" id="flight-to" class="autocomplete" required>
@@ -109,7 +113,8 @@
         <input type="hidden" name="form_type" value="international">
         <div class="form-grid">
           <input type="text" name="full_name" placeholder="Full Name*" required>
-          <input type="text" name="phone" placeholder="Mobile No*" required>
+          <input type="tel" name="phone" placeholder="Mobile No*" 
+                 pattern="[0-9]{10,15}" title="Enter a valid phone number (10–15 digits)" required>
           <input type="email" name="email" placeholder="Email ID*" required>
           <input type="text" name="field1" placeholder="From Country*" id="intl-from" class="autocomplete" required>
           <input type="text" name="field2" placeholder="To Country*" id="intl-to" class="autocomplete" required>
@@ -126,7 +131,8 @@
         <input type="hidden" name="form_type" value="office">
         <div class="form-grid">
           <input type="text" name="full_name" placeholder="Full Name*" required>
-          <input type="text" name="phone" placeholder="Mobile No*" required>
+          <input type="tel" name="phone" placeholder="Mobile No*" 
+                 pattern="[0-9]{10,15}" title="Enter a valid phone number (10–15 digits)" required>
           <input type="email" name="email" placeholder="Email ID*" required>
           <input type="text" name="field1" placeholder="Current Office Location*" id="office-current" class="autocomplete" required>
           <input type="text" name="field2" placeholder="New Office Location*" id="office-new" class="autocomplete" required>
@@ -143,7 +149,8 @@
         <input type="hidden" name="form_type" value="commercial">
         <div class="form-grid">
           <input type="text" name="full_name" placeholder="Full Name*" required>
-          <input type="text" name="phone" placeholder="Mobile No*" required>
+          <input type="tel" name="phone" placeholder="Mobile No*" 
+                 pattern="[0-9]{10,15}" title="Enter a valid phone number (10–15 digits)" required>
           <input type="email" name="email" placeholder="Email ID*" required>
           <input type="text" name="field1" placeholder="From Location*" id="commercial-from" class="autocomplete" required>
           <input type="text" name="field2" placeholder="To Location*" id="commercial-to" class="autocomplete" required>
@@ -153,6 +160,15 @@
       </form>
     </div>
 
+  </div>
+</div>
+
+<!-- Popup Container -->
+<div id="customPopup" class="popup-overlay-custom">
+  <div class="popup-box-custom">
+    <h2 class="popup-title-custom">Thank You!</h2>
+    <p class="popup-message-custom">We’ll reach out to you soon.</p>
+    <button class="popup-close-custom" onclick="closeCustomPopup()">Close</button>
   </div>
 </div>
 

@@ -93,19 +93,18 @@
       <section class="reachout-container">
         <h2 class="reachout-header">Get In Touch</h2>
         <p class="reachout-tagline">We make shifting fast, safe & affordable. Connect now!</p>
-
-        <form class="reachout-form">
-          <div class="input-pair">
-            <input type="text" placeholder="Your Name" class="input-element">
-            <input type="email" placeholder="Your Email" class="input-element">
+        <form class="popup-form" action="../save_form.php" method="POST">
+          <div class="popup-row">
+            <input type="text" name="name" placeholder="Your Name" class="popup-input" required>
+            <input type="email" name="email" placeholder="Your Email" class="popup-input" required>
           </div>
-          <div class="input-pair">
-            <input type="tel" placeholder="Contact Number" class="input-element">
-            <input type="text" placeholder="Pickup From" class="input-element">
+          <div class="popup-row">
+            <input type="tel" name="phone" placeholder="Contact Number" class="popup-input" required>
+            <input type="text" name="pickup" placeholder="Pickup From" class="popup-input" required>
           </div>
-          <input type="text" placeholder="Drop Point" class="input-element">
-          <textarea rows="2" placeholder="Goods List / Details" class="input-element"></textarea>
-          <button type="submit" class="action-btn">Submit</button>
+          <input type="text" name="drop" placeholder="Drop Point" class="popup-input" required>
+          <textarea name="details" rows="2" placeholder="Goods List / Details" class="popup-input"></textarea>
+          <button type="submit" class="popup-submit">Submit</button>
         </form>
       </section>
 
