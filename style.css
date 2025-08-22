@@ -3926,6 +3926,7 @@ textarea {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 50px;
+  margin-top: 2rem;
   position: relative;
   animation: slideDown 1s ease-out forwards;
   color: var(--color-primary);
@@ -4011,6 +4012,7 @@ header.mg-head {
 header.mg-head h1 {
   color: var(--color-primary);
   font-size: 2.5rem;
+  margin-top: 2rem;
 }
 
 header.mg-head p {

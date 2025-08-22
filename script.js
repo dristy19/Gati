@@ -112,6 +112,8 @@ loadSection("service_selection", "../Components/service_selection.html", initQuo
 function initQuoteTabs() {
   const tabs = document.querySelectorAll(".tabs .tab");
   const forms = document.querySelectorAll(".form-content");
+
+  // === TAB SWITCHING (your original code) ===
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
       tabs.forEach((t) => t.classList.remove("active"));
@@ -122,7 +124,35 @@ function initQuoteTabs() {
       if (formToShow) formToShow.style.display = "block";
     });
   });
+
+  // === FORM SUBMISSION (new code) ===
+  const allForms = document.querySelectorAll("#service_selection form");
+  allForms.forEach((form) => {
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault(); // ✅ stop redirect to save_form.php
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch("save_form.php", {
+          method: "POST",
+          body: formData
+        });
+        const text = await response.text();
+
+        if (text.includes("success")) {
+          form.reset();            // ✅ clear form fields
+          showCustomPopup();       // ✅ show thank-you popup
+        } else {
+          alert("⚠️ Submission failed: " + text);
+        }
+      } catch (err) {
+        console.error(err);
+        alert("❌ Submission failed. Please try again later.");
+      }
+    });
+  });
 }
+
 
 // VIDEO CAROUSEL
 loadSection("video_carousel", "../Components/video_carousel.html");
