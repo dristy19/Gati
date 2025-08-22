@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,209 +10,218 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/@geoapify/geocoder-autocomplete@1.3.0/dist/index.min.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/@geoapify/geocoder-autocomplete@1.3.0/dist/geocoder-autocomplete.min.css">
+  <link rel="stylesheet"
+    href="https://unpkg.com/@geoapify/geocoder-autocomplete@1.3.0/dist/geocoder-autocomplete.min.css">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
 
-<div class="quote-widget" id="service_selection">
-  <div class="quote-header">
-    <div class="tabs">
-      <div class="tab active" data-target="domestic"><i class="fas fa-truck-moving"></i><span>Domestic</span></div>
-      <div class="tab" data-target="car"><i class="fas fa-car"></i><span>Car</span></div>
-      <div class="tab" data-target="storage"><i class="fas fa-warehouse"></i><span>Storage</span></div>
-      <div class="tab" data-target="flight"><i class="fas fa-plane"></i><span>Flight</span></div>
-      <div class="tab" data-target="international"><i class="fas fa-globe"></i><span>International</span></div>
-      <div class="tab" data-target="office"><i class="fas fa-briefcase"></i><span>Office</span></div>
-      <div class="tab" data-target="commercial"><i class="fas fa-building"></i><span>Commercial</span></div>
+  <div class="quote-widget" id="service_selection">
+    <div class="quote-header">
+      <div class="tabs">
+        <div class="tab active" data-target="domestic"><i class="fas fa-truck-moving"></i><span>Domestic</span></div>
+        <div class="tab" data-target="car"><i class="fas fa-car"></i><span>Car</span></div>
+        <div class="tab" data-target="storage"><i class="fas fa-warehouse"></i><span>Storage</span></div>
+        <div class="tab" data-target="flight"><i class="fas fa-plane"></i><span>Flight</span></div>
+        <div class="tab" data-target="international"><i class="fas fa-globe"></i><span>International</span></div>
+        <div class="tab" data-target="office"><i class="fas fa-briefcase"></i><span>Office</span></div>
+        <div class="tab" data-target="commercial"><i class="fas fa-building"></i><span>Commercial</span></div>
+      </div>
+
+      <div class="quote-contact">
+        <i class="fas fa-phone-volume animated-icon"></i>
+        <span>+91 72900 08200</span>
+      </div>
     </div>
 
-    <div class="quote-contact">
-      <i class="fas fa-phone-volume animated-icon"></i>
-      <span>+91 72900 08200</span>
+    <div class="form-wrapper">
+
+      <!-- Domestic Moving Form -->
+      <div class="form-content" id="form-domestic">
+        <h3>Get a free <span class="text-highlight">Domestic Moving</span> quote</h3>
+        <form action="save_form.php" method="POST">
+          <input type="hidden" name="form_type" value="domestic">
+          <div class="form-grid">
+            <input type="text" name="full_name" placeholder="Full Name*" required>
+            <input type="tel" name="phone" placeholder="Mobile No*" pattern="[0-9]{10,15}"
+              title="Enter a valid phone number (10–15 digits)" required>
+            <input type="email" name="email" placeholder="Email ID">
+            <input type="text" name="from_location" placeholder="From*" id="domestic-from" class="autocomplete"
+              required>
+            <input type="text" name="to_location" placeholder="To*" id="domestic-to" class="autocomplete" required>
+            <input type="text" name="goods" placeholder="Goods Type (e.g., Household, Furniture)">
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <!-- Car Moving Form -->
+      <div class="form-content" id="form-car" style="display:none;">
+        <h3>Get a free <span class="text-highlight">Car Moving</span> quote</h3>
+        <form action="save_form.php" method="POST">
+          <input type="hidden" name="form_type" value="car">
+          <div class="form-grid">
+            <input type="text" name="full_name" placeholder="Full Name*" required>
+            <input type="tel" name="phone" placeholder="Mobile No*" pattern="[0-9]{10,15}"
+              title="Enter a valid phone number (10–15 digits)" required>
+            <input type="email" name="email" placeholder="Email ID*" required>
+            <input type="text" name="from_location" placeholder="Pickup City*" id="car-pickup" class="autocomplete"
+              required>
+            <input type="text" name="to_location" placeholder="Drop City*" id="car-drop" class="autocomplete" required>
+            <input type="text" name="goods" placeholder="Car Type (e.g., SUV, Sedan)">
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <!-- Storage Form -->
+      <div class="form-content" id="form-storage" style="display:none;">
+        <h3>Get a free <span class="text-highlight">Storage</span> quote</h3>
+        <form action="save_form.php" method="POST">
+          <input type="hidden" name="form_type" value="storage">
+          <div class="form-grid">
+            <input type="text" name="full_name" placeholder="Full Name*" required>
+            <input type="tel" name="phone" placeholder="Mobile No*" required>
+            <input type="email" name="email" placeholder="Email ID">
+            <input type="text" name="from_location" placeholder="City of Storage" id="storage-city"
+              class="autocomplete">
+            <input type="text" name="goods" placeholder="Storage Type (e.g., Household)">
+            <input type="text" name="message" placeholder="Duration or Other Details">
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <!-- Flight Cargo Form -->
+      <div class="form-content" id="form-flight" style="display:none;">
+        <h3>Get a free <span class="text-highlight">Flight Cargo</span> quote</h3>
+        <form action="save_form.php" method="POST">
+          <input type="hidden" name="form_type" value="flight">
+          <div class="form-grid">
+            <input type="text" name="full_name" placeholder="Full Name*" required>
+            <input type="tel" name="phone" placeholder="Mobile No*" required>
+            <input type="email" name="email" placeholder="Email ID*" required>
+            <input type="text" name="from_location" placeholder="From Airport*" id="flight-from" class="autocomplete"
+              required>
+            <input type="text" name="to_location" placeholder="To Airport*" id="flight-to" class="autocomplete"
+              required>
+            <input type="text" name="goods" placeholder="Approximate Weight (kg)*" required>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <!-- International Moving Form -->
+      <div class="form-content" id="form-international" style="display:none;">
+        <h3>Get a free <span class="text-highlight">International Moving</span> quote</h3>
+        <form action="save_form.php" method="POST">
+          <input type="hidden" name="form_type" value="international">
+          <div class="form-grid">
+            <input type="text" name="full_name" placeholder="Full Name*" required>
+            <input type="tel" name="phone" placeholder="Mobile No*" required>
+            <input type="email" name="email" placeholder="Email ID*" required>
+            <input type="text" name="from_location" placeholder="From Country*" id="intl-from" class="autocomplete"
+              required>
+            <input type="text" name="to_location" placeholder="To Country*" id="intl-to" class="autocomplete" required>
+            <input type="text" name="goods" placeholder="Moving Type (e.g., Household, Office)*" required>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <!-- Office Shifting Form -->
+      <div class="form-content" id="form-office" style="display:none;">
+        <h3>Get a free <span class="text-highlight">Office Shifting</span> quote</h3>
+        <form action="save_form.php" method="POST">
+          <input type="hidden" name="form_type" value="office">
+          <div class="form-grid">
+            <input type="text" name="full_name" placeholder="Full Name*" required>
+            <input type="tel" name="phone" placeholder="Mobile No*" required>
+            <input type="email" name="email" placeholder="Email ID*" required>
+            <input type="text" name="from_location" placeholder="Current Office Location*" id="office-current"
+              class="autocomplete" required>
+            <input type="text" name="to_location" placeholder="New Office Location*" id="office-new"
+              class="autocomplete" required>
+            <input type="text" name="goods" placeholder="Approximate Office Size (e.g., 1000 sq ft)*" required>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <!-- Commercial Shifting Form -->
+      <div class="form-content" id="form-commercial" style="display:none;">
+        <h3>Get a free <span class="text-highlight">Commercial Shifting</span> quote</h3>
+        <form action="save_form.php" method="POST">
+          <input type="hidden" name="form_type" value="commercial">
+          <div class="form-grid">
+            <input type="text" name="full_name" placeholder="Full Name*" required>
+            <input type="tel" name="phone" placeholder="Mobile No*" required>
+            <input type="email" name="email" placeholder="Email ID*" required>
+            <input type="text" name="from_location" placeholder="From Location*" id="commercial-from"
+              class="autocomplete" required>
+            <input type="text" name="to_location" placeholder="To Location*" id="commercial-to" class="autocomplete"
+              required>
+            <input type="text" name="goods" placeholder="Business Type (e.g., Retail, Warehouse)*" required>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+
     </div>
   </div>
 
-  <div class="form-wrapper">
-
-    <!-- Domestic Moving Form -->
-    <div class="form-content" id="form-domestic">
-      <h3>Get a free <span class="text-highlight">Domestic Moving</span> quote</h3>
-      <form action="save_form.php" method="POST">
-        <input type="hidden" name="form_type" value="domestic">
-        <div class="form-grid">
-          <input type="text" name="full_name" placeholder="Full Name*" required>
-          <input type="tel" name="phone" placeholder="Mobile No*" 
-                 pattern="[0-9]{10,15}" title="Enter a valid phone number (10–15 digits)" required>
-          <input type="email" name="email" placeholder="Email ID">
-          <input type="text" name="field1" placeholder="From*" id="domestic-from" class="autocomplete" required>
-          <input type="text" name="field2" placeholder="To*" id="domestic-to" class="autocomplete" required>
-          <!-- Removed captcha -->
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+  <!-- Popup Container -->
+  <div id="customPopup" class="popup-overlay-custom">
+    <div class="popup-box-custom">
+      <h2 class="popup-title-custom">Thank You!</h2>
+      <p class="popup-message-custom">We’ll reach out to you soon.</p>
+      <button class="popup-close-custom" onclick="closeCustomPopup()">Close</button>
     </div>
-
-    <!-- Car Moving Form -->
-    <div class="form-content" id="form-car" style="display:none;">
-      <h3>Get a free <span class="text-highlight">Car Moving</span> quote</h3>
-      <form action="save_form.php" method="POST">
-        <input type="hidden" name="form_type" value="car">
-        <div class="form-grid">
-          <input type="text" name="full_name" placeholder="Full Name*" required>
-          <input type="tel" name="phone" placeholder="Mobile No*" 
-                 pattern="[0-9]{10,15}" title="Enter a valid phone number (10–15 digits)" required>
-          <input type="email" name="email" placeholder="Email ID*" required>
-          <input type="text" name="field1" placeholder="Pickup City*" id="car-pickup" class="autocomplete" required>
-          <input type="text" name="field2" placeholder="Drop City*" id="car-drop" class="autocomplete" required>
-          <input type="text" name="field3" placeholder="Car Type (e.g., SUV, Sedan)">
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-
-    <!-- Storage Form -->
-    <div class="form-content" id="form-storage" style="display:none;">
-      <h3>Get a free <span class="text-highlight">Storage</span> quote</h3>
-      <form action="save_form.php" method="POST">
-        <input type="hidden" name="form_type" value="storage">
-        <div class="form-grid">
-          <input type="text" name="full_name" placeholder="Full Name*" required>
-          <input type="tel" name="phone" placeholder="Mobile No*" 
-                 pattern="[0-9]{10,15}" title="Enter a valid phone number (10–15 digits)" required>
-          <input type="email" name="email" placeholder="Email ID">
-          <input type="text" name="field1" placeholder="City of Storage" id="storage-city" class="autocomplete">
-          <input type="text" name="field2" placeholder="Duration (e.g., 2 months)">
-          <input type="text" name="field3" placeholder="Storage Type (e.g., Household)">
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-
-    <!-- Flight Cargo Form -->
-    <div class="form-content" id="form-flight" style="display:none;">
-      <h3>Get a free <span class="text-highlight">Flight Cargo</span> quote</h3>
-      <form action="save_form.php" method="POST">
-        <input type="hidden" name="form_type" value="flight">
-        <div class="form-grid">
-          <input type="text" name="full_name" placeholder="Full Name*" required>
-          <input type="tel" name="phone" placeholder="Mobile No*" 
-                 pattern="[0-9]{10,15}" title="Enter a valid phone number (10–15 digits)" required>
-          <input type="email" name="email" placeholder="Email ID*" required>
-          <input type="text" name="field1" placeholder="From Airport*" id="flight-from" class="autocomplete" required>
-          <input type="text" name="field2" placeholder="To Airport*" id="flight-to" class="autocomplete" required>
-          <input type="text" name="field3" placeholder="Approximate Weight (kg)*" required>
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-
-    <!-- International Moving Form -->
-    <div class="form-content" id="form-international" style="display:none;">
-      <h3>Get a free <span class="text-highlight">International Moving</span> quote</h3>
-      <form action="save_form.php" method="POST">
-        <input type="hidden" name="form_type" value="international">
-        <div class="form-grid">
-          <input type="text" name="full_name" placeholder="Full Name*" required>
-          <input type="tel" name="phone" placeholder="Mobile No*" 
-                 pattern="[0-9]{10,15}" title="Enter a valid phone number (10–15 digits)" required>
-          <input type="email" name="email" placeholder="Email ID*" required>
-          <input type="text" name="field1" placeholder="From Country*" id="intl-from" class="autocomplete" required>
-          <input type="text" name="field2" placeholder="To Country*" id="intl-to" class="autocomplete" required>
-          <input type="text" name="field3" placeholder="Moving Type (e.g., Household, Office)*" required>
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-
-    <!-- Office Shifting Form -->
-    <div class="form-content" id="form-office" style="display:none;">
-      <h3>Get a free <span class="text-highlight">Office Shifting</span> quote</h3>
-      <form action="save_form.php" method="POST">
-        <input type="hidden" name="form_type" value="office">
-        <div class="form-grid">
-          <input type="text" name="full_name" placeholder="Full Name*" required>
-          <input type="tel" name="phone" placeholder="Mobile No*" 
-                 pattern="[0-9]{10,15}" title="Enter a valid phone number (10–15 digits)" required>
-          <input type="email" name="email" placeholder="Email ID*" required>
-          <input type="text" name="field1" placeholder="Current Office Location*" id="office-current" class="autocomplete" required>
-          <input type="text" name="field2" placeholder="New Office Location*" id="office-new" class="autocomplete" required>
-          <input type="text" name="field3" placeholder="Approximate Office Size (e.g., 1000 sq ft)*" required>
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-
-    <!-- Commercial Shifting Form -->
-    <div class="form-content" id="form-commercial" style="display:none;">
-      <h3>Get a free <span class="text-highlight">Commercial Shifting</span> quote</h3>
-      <form action="save_form.php" method="POST">
-        <input type="hidden" name="form_type" value="commercial">
-        <div class="form-grid">
-          <input type="text" name="full_name" placeholder="Full Name*" required>
-          <input type="tel" name="phone" placeholder="Mobile No*" 
-                 pattern="[0-9]{10,15}" title="Enter a valid phone number (10–15 digits)" required>
-          <input type="email" name="email" placeholder="Email ID*" required>
-          <input type="text" name="field1" placeholder="From Location*" id="commercial-from" class="autocomplete" required>
-          <input type="text" name="field2" placeholder="To Location*" id="commercial-to" class="autocomplete" required>
-          <input type="text" name="field3" placeholder="Business Type (e.g., Retail, Warehouse)*" required>
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-
   </div>
-</div>
 
-<!-- Popup Container -->
-<div id="customPopup" class="popup-overlay-custom">
-  <div class="popup-box-custom">
-    <h2 class="popup-title-custom">Thank You!</h2>
-    <p class="popup-message-custom">We’ll reach out to you soon.</p>
-    <button class="popup-close-custom" onclick="closeCustomPopup()">Close</button>
-  </div>
-</div>
+  <script>
+    const apiKey = "f1980dd674ad4bcaa7f4d5000c7856db";
 
-<script>
-  const apiKey = "f1980dd674ad4bcaa7f4d5000c7856db"; 
+    const fields = [
+      'domestic-from', 'domestic-to',
+      'car-pickup', 'car-drop',
+      'storage-city',
+      'flight-from', 'flight-to',
+      'intl-from', 'intl-to',
+      'office-current', 'office-new',
+      'commercial-from', 'commercial-to'
+    ];
 
-  const fields = [
-    'domestic-from', 'domestic-to',
-    'car-pickup', 'car-drop',
-    'storage-city',
-    'flight-from', 'flight-to',
-    'intl-from', 'intl-to',
-    'office-current', 'office-new',
-    'commercial-from', 'commercial-to'
-  ];
-
-  fields.forEach(id => {
-    const element = document.getElementById(id);
-    if (element) {
-      new GeoapifyGeocoderAutocomplete(element, apiKey, {
-        type: ['city', 'country', 'airport'],
-        lang: 'en',
-        debounce: 500
-      }).on('placechanged', (place) => {
-        console.log('Place selected:', place);
-      });
-    }
-  });
-
-  const tabs = document.querySelectorAll('.tab');
-  const forms = document.querySelectorAll('.form-content');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-
-      const target = tab.getAttribute('data-target');
-      forms.forEach(f => f.style.display = 'none');
-      document.getElementById('form-' + target).style.display = 'block';
+    fields.forEach(id => {
+      const element = document.getElementById(id);
+      if (element) {
+        new GeoapifyGeocoderAutocomplete(element, apiKey, {
+          type: ['city', 'country', 'airport'],
+          lang: 'en',
+          debounce: 500
+        }).on('placechanged', (place) => {
+          console.log('Place selected:', place);
+        });
+      }
     });
-  });
-</script>
+
+    const tabs = document.querySelectorAll('.tab');
+    const forms = document.querySelectorAll('.form-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const target = tab.getAttribute('data-target');
+        forms.forEach(f => f.style.display = 'none');
+        document.getElementById('form-' + target).style.display = 'block';
+      });
+    });
+  </script>
 
 </body>
+
 </html>

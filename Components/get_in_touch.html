@@ -24,19 +24,20 @@
       </div>
 
       <!-- Contact Form -->
-      <form class="contact-right" id="pickupForm" method="POST">
-        <div class="form-row">
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="email" name="email" placeholder="Your Email" required />
-        </div>
-        <div class="form-row">
-          <input type="tel" name="phone" placeholder="Contact Number" required />
-          <input type="text" name="pickup" placeholder="Pickup From" required />
-        </div>
-        <input type="text" name="drop" placeholder="Drop Point" required />
-        <textarea rows="2" name="details" placeholder="Goods List / Details" required></textarea>
-        <button type="submit">Submit</button>
-      </form>
+<form class="contact-right" id="pickupForm" method="POST" action="../save_form.php">
+  <div class="form-row">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+  </div>
+  <div class="form-row">
+    <input type="tel" name="phone" placeholder="Contact Number" required />
+    <input type="text" name="pickup" placeholder="Pickup From" required />
+  </div>
+  <input type="text" name="drop" placeholder="Drop Point" required />
+  <input type="text" name="goods" placeholder="Goods Type (e.g. Furniture, Boxes)" required />
+  <button type="submit">Submit</button>
+</form>
+
     </div>
   </section>
 

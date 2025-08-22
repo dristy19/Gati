@@ -280,20 +280,19 @@ function setupPickupForm() {
       const text = await response.text();
 
       if (text.includes("success")) {
-        popupForm.reset();
-        popupOverlay.style.display = 'none';
-        showCustomPopup();  // ✅ Custom popup instead of alert
-      }
-      else {
-        alert("⚠️ Submission failed: " + text); // Error alert
+        form.reset();                // ✅ reset the actual form
+        showCustomPopup();           // ✅ show your custom popup
+      } else {
+        alert("⚠️ Submission failed: " + text);
       }
 
     } catch (err) {
       console.error(err);
-      alert("❌ Submission failed. Please try again later."); // Network/error alert
+      alert("❌ Submission failed. Please try again later.");
     }
   });
 }
+
 
 // Initialize the form handler
 window.addEventListener('DOMContentLoaded', setupPickupForm);
